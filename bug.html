@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    <p>This is some text.</p>
+  </div>
+
+  <script>
+    // Incorrectly using innerHTML to add a new element to the parent
+    document.getElementById('myDiv').innerHTML += '<div><p>This is new text.</p></div>';
+
+    // The correct way is to create a new element and append it
+    let newDiv = document.createElement('div');
+    let newP = document.createElement('p');
+    newP.textContent = 'This is also new text';
+    newDiv.appendChild(newP);
+    document.getElementById('myDiv').appendChild(newDiv);
+  </script>
+</body>
+</html>
